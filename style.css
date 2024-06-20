@@ -1,22 +1,25 @@
 
 .top-bar {
     background-color: #A8D0DB;
-    width: 200px;
+    width: auto;
     height: 500px;
-    margin-left: 15px;
-    margin-right: 15px;
-    font-family: "Nova Mono", monospace;
-}
-.explain {
-    background-color: #190E4F;
-    width: 90%;
-    height: 85%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
+    font-family: "Nova Mono", monospace;
+    text-align: center;
+}
+.explain {
+    position: relative;
+    left: auto; 
+    background-color: #190E4F;
+    width: 200px;
+    height: 85%;
+    margin-top: auto;
     color: white;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
+    border: black solid 3px;
+    padding-left: 15px;
 }
 a {
     background-color: #9591ff;
@@ -32,8 +35,5 @@ a {
     height: 90vh;
     margin-top: 50px;
     margin-left: auto;
-    margin-right: auto;
-    display: flex;
-   
-    
+    margin-right: auto;  
 }
