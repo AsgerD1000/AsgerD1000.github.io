@@ -1,0 +1,39 @@
+
+.top-bar {
+    background-color: #A8D0DB;
+    width: 200px;
+    height: 500px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-family: "Nova Mono", monospace;
+}
+.explain {
+    background-color: #190E4F;
+    width: 90%;
+    height: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+a {
+    background-color: #9591ff;
+    text-decoration: none;
+    color: black;
+    border: 2px solid;
+    border-radius: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+.main-page {
+    width: 90vw;
+    height: 90vh;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+   
+    
+}
