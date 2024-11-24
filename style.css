@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: 'ViaExpert';
+    src: url('ViaExpert-Regular.woff') format('woff');
+}
 .top-bar {
     background-color: #A8D0DB;
     width: auto;
@@ -8,6 +11,10 @@
     font-family: "Nova Mono", monospace;
     text-align: center;
 }
+.explain h2 {
+    font-size: 30px;
+}
+
 .explain {
     position: relative;
     left: auto; 
@@ -21,7 +28,11 @@
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
     border: black solid 3px;
+    transition: font-size 0.3s, height 0.3s; /* Smooth font changes */
+    font-size: 1em;
+    padding: 5px;
 }
+
 a {
     background-color: #9591ff;
     text-decoration: none;
@@ -38,4 +49,39 @@ a {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;  
+}
+
+
+
+.a span#ba {
+    display: inline;
+}
+
+.a:hover span#ba {
+    display: none;
+}
+
+.a span#aa {
+    display: none;
+}
+
+.a:hover span#aa {
+    display: inline;
+}
+
+
+.b span#ab {
+    display: none;
+}
+
+.b:hover span#ab {
+    display: inline;
+}
+
+.b span#bb {
+    display: inline;
+}
+
+.b:hover span#bb {
+    display: none;
 }
