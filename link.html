@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body bgcolor="#272635">
+    <div class="link-bar" style="left:25vw; right:25vw;"> 
+        <h3>Login</h3>
+        <div class="mail">
+            <label for="mail">Email</label> <br>
+            <input type="email" id="mail"> <br>
+        </div>
+        <div class="password">
+            <label for="pass">Password</label><br>
+            <input type="password" id="pass"> <br>
+            <label for="box" style="font-size: 10px;">The passwords are not encrypted so make it strong and dont use your regular passwords.</label>
+            <input type="checkbox" id="box" value="">
+        </div>
+        <div>
+            <button onclick="login()" class="login">Login</button>
+            <div style="color:red;" id="error"></div>
+        </div>
+    </div>
+
+    <!-- Firebase App (core SDK) -->
+    <!-- Your custom script -->
+    <script type="module" src="link.js"></script>
+</body>
+</html>

@@ -11,6 +11,57 @@
     font-family: "Nova Mono", monospace;
     text-align: center;
 }
+
+.link-bar {
+    padding-top: 5vh;
+    background-color: #A8D0DB;
+    width: 35vw;
+    height: 50vh;
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Nova Mono", monospace;
+    text-align: center;
+}
+
+input {
+
+    border-radius: 5px;
+    font-family: ViaExpert;
+}
+
+.login {
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border-radius: 25%;
+    border: rgb(0, 0, 0) ridge 1px;
+}
+
+
+.login:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+
+.mail input:focus {
+    border: rgb(0, 255, 0) solid 2px;
+    outline: none;
+}
+
+.password input:focus {
+    border: rgb(255, 0, 0) solid 2px;
+    outline: none;
+}
+
+
+.login, .mail, .password {
+    margin:auto;
+    margin-top:5vh;
+    font-family: ViaExpert;
+}
+
 .explain h2 {
     font-size: 30px;
 }
