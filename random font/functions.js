@@ -83,7 +83,7 @@ window.copy = function () {
 window.logout = function () {
   auth.signOut().then(() => {
     alert('Logged out successfully!');
-    window.location.href = 'login.html'; // Redirect after logout
+    window.location.href = '../link.html'; // Redirect after logout
   }).catch((error) => {
     console.error('Error logging out:', error);
   });
