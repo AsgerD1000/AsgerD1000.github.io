@@ -25,116 +25,12 @@
   </style>
   <!-- Import Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
-  <script>
-    // Firebase configuration
-    const firebaseConfig = {
-    apiKey: "AIzaSyDSeLUHYcwokBh1WfxAyCvEfLez3tz5VJ8",
-    authDomain: "login-57413.firebaseapp.com",
-    projectId: "login-57413",
-    storageBucket: "login-57413.appspot.com", // Fixed the storageBucket URL
-    messagingSenderId: "107342732656",
-    appId: "1:107342732656:web:70c6f5780b0f27a37a83b5",
-    measurementId: "G-FG4EJRQKFE"
-  };
 
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+  <!-- Firebase Module -->
+  <script type="module" src="firebase.js"></script>
 
-    // Function to check user authentication state
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        document.getElementById('auth-status').textContent = `Logged in as: ${user.email}`;
-        document.getElementById('logout-btn').style.display = 'inline';
-      } else {
-        window.location.href = 'login.html'; // Redirect to login page if not authenticated
-      }
-    });
-
-    // Logout function
-    function logout() {
-      auth.signOut().then(() => {
-        alert('Logged out successfully!');
-        window.location.href = 'login.html';
-      }).catch((error) => {
-        console.error('Error logging out:', error);
-      });
-    }
-
-    let fonts = [];
-    // Fetching fonts from data.json
-    fetch("data.json")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // For debugging purposes
-        // Populate the fonts array
-        data.items.forEach(item => {
-          fonts.push(item.family);
-        });
-      })
-      .catch(error => {
-        console.error("Error fetching data:", error);
-      });
-
-    function copy() {
-      var spans = document.querySelectorAll('span');
-      var copyText = Array.from(spans).map(span => {
-        const fontFamily = window.getComputedStyle(span).fontFamily;
-        const text = span.textContent;
-        return `<span style="font-family: ${fontFamily};">${text}</span>`;
-      }).join('');
-      navigator.clipboard.write([
-        new ClipboardItem({
-          "text/html": new Blob([copyText], { type: "text/html" }),
-          "text/plain": new Blob([Array.from(spans).map(span => span.textContent).join('')], { type: "text/plain" })
-        })
-      ]).then(() => {
-        alert("Copied with formatting!");
-      }).catch(err => {
-        console.error("Failed to copy:", err);
-      });
-    }
-
-    function applyRandomFont() {
-      const existingLinks = document.querySelectorAll('link[href^="https://fonts.googleapis.com"]');
-      existingLinks.forEach(link => link.remove());
-      const fontelement = document.getElementById("current-font");
-      const inputText = document.getElementById('text-input').value;
-
-      if (!inputText.trim()) {
-        alert('Please enter some text!');
-        return;
-      }
-
-      const outputElement = document.getElementById('text-output');
-      outputElement.innerHTML = ''; // Clear previous content
-      const selectedFonts = []; // Array to keep track of selected fonts for the current input
-
-      inputText.split('').forEach(letter => {
-        let randomFont = "";
-        if (letter != " ") {
-          randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-        }
-        selectedFonts.push(randomFont); // Track the fonts being used for this input
-
-        const span = document.createElement('span');
-        span.textContent = letter;
-        span.style.fontFamily = randomFont;
-        span.className = 'letter'; // Optional for styling individual letters
-        outputElement.appendChild(span);
-
-        const link = document.createElement('link');
-        link.href = `https://fonts.googleapis.com/css2?family=${randomFont.replace(/ /g, '+')}&display=swap`;
-        link.rel = 'stylesheet';
-        document.head.appendChild(link);
-      });
-
-      fontelement.innerHTML = "Fonts: " + selectedFonts.join(', ');
-    }
-  </script>
+  <!-- Functional Script -->
+  <script type='module'src="functions.js" defer></script>
 </head>
 <body>
   <h1>Random Font Generator</h1>

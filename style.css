@@ -104,35 +104,3 @@ a {
 
 
 
-.a span#ba {
-    display: inline;
-}
-
-.a:hover span#ba {
-    display: none;
-}
-
-.a span#aa {
-    display: none;
-}
-
-.a:hover span#aa {
-    display: inline;
-}
-
-
-.b span#ab {
-    display: none;
-}
-
-.b:hover span#ab {
-    display: inline;
-}
-
-.b span#bb {
-    display: inline;
-}
-
-.b:hover span#bb {
-    display: none;
-}

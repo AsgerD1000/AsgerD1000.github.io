@@ -20,17 +20,31 @@ const app = initializeApp(firebaseConfig); // Initialize the Firebase app
 const analytics = getAnalytics(app); // Initialize Analytics
 const auth = getAuth(app); // Pass the app instance to getAuth()
 
+function showpass() {
+  const passwordelement = document.getElementById("pass");
+  const shhd = document.getElementById('shhd');
+  if (passwordelement.type == 'password') {
+  shhd.innerHTML = 'hide';
+  passwordelement.type = 'text';
+  }
+  else {
+    shhd.innerHTML = 'show';
+    passwordelement.type = 'password'
+  }
+}
+
+
+
 // Login function
 async function login() {
   const email = document.getElementById("mail").value;
   const password = document.getElementById("pass").value;
   const error = document.getElementById("error");
-
   try {
     // Attempt to sign in the user
     await signInWithEmailAndPassword(auth, email, password);
     // Redirect to the protected page on successful login
-    window.location.href = "protected.html";
+    window.location.href = "random font/fonts.html";
   } catch (err) {
     error.textContent = err.message; // Display error message if login fails
   }
@@ -38,3 +52,4 @@ async function login() {
 
 // Attach the function to the global window object
 window.login = login;
+window.showpass = showpass;
