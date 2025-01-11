@@ -12,8 +12,11 @@ async function fetchFonts() {
   }
 }
 
+let selectedFonts = []; // Define selectedFonts as a global variable
+
 // Function to apply random fonts to input text
 window.applyRandomFont = async function () {
+  selectedFonts = [];
   const inputText = document.getElementById('text-input').value;
   const outputElement = document.getElementById('text-output');
   const fontelement = document.getElementById("current-font");
@@ -25,8 +28,6 @@ window.applyRandomFont = async function () {
 
   // Clear previous content
   outputElement.innerHTML = '';
-
-  const selectedFonts = [];
 
   // Fetch fonts
   const fonts = await fetchFonts();
@@ -57,6 +58,46 @@ window.applyRandomFont = async function () {
 
   fontelement.innerHTML = "Fonts: " + selectedFonts.join(', ');
 };
+
+window.download = async function downloadFonts(...args) {
+  const fonts = args.length ? args : selectedFonts.map(font => ({
+    name: font,
+    url: `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, '+')}&display=swap`
+  }));
+
+  const zip = new JSZip();
+
+  for (const font of fonts) {
+    try {
+      // Fetch the CSS file
+      const response = await fetch(font.url);
+      const cssText = await response.text();
+
+      // Extract the font file URL from the CSS
+      const fontFileUrl = cssText.match(/url\((https:\/\/fonts.gstatic.com\/.*?\.woff2)\)/)[1];
+
+      // Fetch the font file
+      const fontResponse = await fetch(fontFileUrl);
+      const fontBlob = await fontResponse.blob();
+
+      // Add the WOFF2 file to the ZIP
+      zip.file(`${font.name}.woff2`, fontBlob);
+    } catch (error) {
+      console.error(`Error downloading the font ${font.name}:`, error);
+    }
+  }
+
+  // Generate the ZIP file and trigger the download
+  try {
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(zipBlob);
+    link.download = 'fonts.zip';
+    link.click();
+  } catch (error) {
+    console.error('Error generating the ZIP file:', error);
+  }
+}
 
 // Function to copy text with formatting
 window.copy = function () {
