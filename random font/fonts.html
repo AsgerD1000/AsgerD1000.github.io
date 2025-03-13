@@ -30,7 +30,9 @@
   <script type="module" src="firebase.js"></script>
 
   <!-- Functional Script -->
-  <script type='module'src="functions.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/1.3.3/opentype.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script type='module' src="functions.js" defer></script>
 </head>
 <body>
   <h1>Random Font Generator</h1>
@@ -40,6 +42,7 @@
   <div id="text-output">Your text will appear here.</div>
   <br>
   <button onclick="copy()">Copy text</button>
+  <button id="download-font" onclick="download()">Download font</button>
   <p id="current-font" style="margin-top: 10px; font-style: italic;">Font: None</p>
   <p id="auth-status" style="margin-top: 20px;"></p>
   <button id="logout-btn" style="display: none;" onclick="logout()">Logout</button>
