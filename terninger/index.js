@@ -10,7 +10,7 @@ async function roll() {
     let temp = 0;
     let updateProgressBar = () => {
         let progress = Math.round((sgc / totalIterations) * 10);
-        pro.innerHTML = `[${"■".repeat(progress)}${" ".repeat(10 - progress)}]`;
+        pro.innerHTML = `[${"■".repeat(progress)}${" ".repeat(10 - progress)}] ${progress}/10`;
     };
 
     for(a = 1; a <= tal; a++)   {
