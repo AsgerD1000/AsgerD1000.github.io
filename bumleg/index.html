@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="bumleg.js"></script>
+    <link rel="stylesheet" href="bumleg.css">
+</head>
+<body>
+    <div class="expl">
+        <p>tryk på start for at starte</p>
+    </div>
+    <div id="start" class="start" style="visibility: visible;">
+        <input id='starttal' type="number" placeholder="Tal start">
+        <input id='tabel' type="number" placeholder="Tabel">
+        <br>
+        <button id="start" onclick="start()">start</button>
+    </div>
+    <div id="igang" class="igang" style="visibility: hidden;">
+        <button id="forrige" onclick="next('-')">forrige</button>
+        <button id="next" onclick="next('+')">næste</button>
+        <p id="tal">Tal: </p>
+        <p id="korrekt">Korrekt: </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.expl {
+    display: flex;
+    justify-content: center;
+}
+
+
+.start, .igang  {
+    position: absolute;
+    width: 100vw;
+    left:5vw;
+
+}
+
+#starttal {
+    width: 45vw;
+    height: 10vw;
+    text-align: center;
+}
+
+#tabel {
+    width: 45vw;
+    height: 10vw;
+    text-align: center;
+}
+
+#startb {
+    width: 25vw;
+    height: 25vw;
+    margin-left: 35vw;
+}
