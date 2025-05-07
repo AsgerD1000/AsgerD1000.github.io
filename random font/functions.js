@@ -39,25 +39,21 @@ window.applyRandomFont = async function () {
   // Apply a random font for each letter in the input text
   inputText.split('').forEach((letter, index) => {
     let randomFont = "";
-    if (letter != " ") {
-      randomFont = fonts[Math.floor(Math.random() * fonts.length)];
-    }
-    if (randomFont != "") {
+    randomFont = fonts[Math.floor(Math.random() * fonts.length)];
     selectedFonts.push(randomFont);
-    }
-
     const span = document.createElement('span');
     span.textContent = letter;
     span.style.fontFamily = randomFont;
-    span.className = 'letter';
-    span.style.cursor = 'pointer'
+    span.classList.add("letter");
     span.addEventListener("mousedown", ()=> {
       if (fontelement.innerHTML.length >= index) {
         if (selectedFonts[index].includes('<strong>') == false) {
           selectedFonts[index] = "<strong>" + selectedFonts[index] + "</strong>"
+          span.classList.add("selected")
         }
         else {
           selectedFonts[index] = selectedFonts[index].replaceAll("<strong>", "").replaceAll("</strong>", "")
+          span.classList.remove("selected")
         }
         fontelement.innerHTML = "Fonts: " + selectedFonts.join(', ');
       }
