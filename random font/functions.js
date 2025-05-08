@@ -1,11 +1,17 @@
 import { auth } from './firebase.js';
 
+var aspect_ratio = window.innerWidth / window.innerHeight
+if (Math.abs(aspect_ratio - (16 / 9)) >= 0.5) {
+  alert('You are not using the optimized aspect ratio. If the sites ugly deal make a pull request: https://github.com/AsgerD1000/AsgerD1000.github.io/pulls')
+}
+
+
 // Function to fetch fonts from data.json
-async function fetchFonts() {
+async function fetchFonts(file) {
   try {
-    const response = await fetch('data.json');
+    const response = await fetch(file);
     const data = await response.json();
-    return data.items.map(item => item.family);
+    return data;
   } catch (error) {
     console.error('Error loading fonts:', error);
     return [];
@@ -20,6 +26,7 @@ window.applyRandomFont = async function () {
   const inputText = document.getElementById('text-input').value;
   const outputElement = document.getElementById('text-output');
   const fontelement = document.getElementById("current-font");
+  const MS = document.getElementById("MS");
 
   if (!inputText.trim()) {
     alert('Please enter some text!');
@@ -28,9 +35,14 @@ window.applyRandomFont = async function () {
 
   // Clear previous content
   outputElement.innerHTML = '';
-
+  let fonts
   // Fetch fonts
-  const fonts = await fetchFonts();
+  if (MS.checked) {
+  fonts = await fetchFonts('microsoft-fonts.json');
+  }
+  else {
+  fonts = await fetchFonts('google-fonts.json');
+  }
   if (fonts.length === 0) {
     alert('No fonts available.');
     return;
@@ -112,9 +124,19 @@ window.download = async function downloadFonts(...args) {
 
 // Function to copy text with formatting
 window.copy = function () {
-  var spans = document.querySelectorAll('span');
-  var copyText = Array.from(spans).map(span => {
-    const fontFamily = window.getComputedStyle(span).fontFamily;
+  const spans = document.querySelectorAll('span');
+  const copyText = Array.from(spans).map(span => {
+    // Get the computed font family
+    let fontFamily = window.getComputedStyle(span).fontFamily;
+
+    // Extract only the primary font and clean it up
+    fontFamily = fontFamily.split(',')[0].replace(/["']/g, '').trim();
+
+    // Wrap it in single quotes if it's more than one word
+    if (fontFamily.includes(' ')) {
+      fontFamily = `'${fontFamily}'`;
+    }
+
     const text = span.textContent;
     return `<span style="font-family: ${fontFamily};">${text}</span>`;
   }).join('');
@@ -125,7 +147,7 @@ window.copy = function () {
       "text/plain": new Blob([Array.from(spans).map(span => span.textContent).join('')], { type: "text/plain" })
     })
   ]).then(() => {
-    alert("Copied with formatting!");
+    alert("Copied!");
   }).catch(err => {
     console.error("Failed to copy:", err);
   });
