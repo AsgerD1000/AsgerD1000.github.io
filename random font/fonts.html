@@ -14,6 +14,7 @@
       margin: 0.8vw;
     }
     #text-output {
+      word-break: keep-all;
       margin-top: 0.4vw;
       padding: 0.8vw;
       font-size: 1vw;
@@ -30,7 +31,7 @@
       font-size: 16px;
     }
     .letter {
-      flex: 0 0 auto;
+      white-space:pre;
       cursor: pointer;
       background-color: white;
     }
@@ -104,7 +105,7 @@
   <input type="radio" name="MSGGL" id="GGL" value="GGL" checked>
   </label>
   </div>
-  <input type="text" id="text-input" placeholder="Type something here..." />
+  <textarea id="text-input">Type something... </textarea>
   <button onclick="applyRandomFont()">Generate Random Font</button> <br>
   <div id="text-output" class="text-output">Your text will appear here.</div>
   <br>
